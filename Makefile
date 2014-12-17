@@ -2,12 +2,12 @@ TARGET=visual_err
 CFLAGS=-I/usr/include/SDL -I. -I./textscreen/ -Wno-write-strings -Og -ggdb
 CXXFLAGS=-I/usr/include/SDL -I. -I./textscreen/ -fpermissive -Wno-write-strings -Og -ggdb
 LDFLAGS=
-LIBS=-lSDL -lpthread
+LIBS=-lSDL -lpthread -lm
 
 CC=gcc
 CXX=g++
 
-SRC= 	main.c \
+SRC= 	main.c
 		
 SRC2=	textscreen/txt_radiobutton.c \
 		textscreen/txt_window_action.c \
@@ -34,10 +34,7 @@ OBJ= $(patsubst %.c,%.o,$(SRC))
 OBJ2= $(patsubst %.c,%.o,$(SRC2))
 
 all: $(OBJ) $(OBJ2)
-	$(CXX) $(LDFLAGS) -o $(TARGET) $(OBJ) $(OBJ2) $(LIBS)
-	
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CC) $(LDFLAGS) -o $(TARGET) $(OBJ) $(OBJ2) $(LIBS)
 	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
