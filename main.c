@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	
+	SDL_ShowCursor(0);
 	window = TXT_NewWindow("Error");
 
 	txt_window_action_t* act;
